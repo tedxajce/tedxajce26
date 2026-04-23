@@ -20,6 +20,7 @@ import TeamSection from './components/TeamSection'
 import ContactSection from './components/ContactSection'
 import CustomCursor from './components/CustomCursor'
 import Navbar from './components/Navbar'
+import Preloader from './components/Preloader'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { useDetectGPU } from '@react-three/drei'
 import * as THREE from 'three'
@@ -71,6 +72,7 @@ export default function App() {
 
   return (
     <>
+      <Preloader />
       <CustomCursor />
       <div className="canvas-container" style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100vh', zIndex: 0 }}>
         <ErrorBoundary>

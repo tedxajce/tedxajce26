@@ -1,0 +1,121 @@
+.preloader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #050505;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s ease-out, transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.preloader-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(1.05); /* Slight expansion outwards as the 3D world appears */
+}
+
+.preloader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.preloader-logo-container {
+  position: relative;
+  display: inline-block;
+}
+
+.preloader-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: 10px;
+  color: #ffffff;
+  position: relative;
+  z-index: 2;
+  text-transform: uppercase;
+}
+
+.preloader-glitch-layer {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  letter-spacing: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  color: #ffffff;
+  z-index: 1;
+  opacity: 0.8;
+  text-shadow: -2px 0 #0ff;
+  animation: preloader-glitch 2s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+.preloader-glitch-layer.offset {
+  text-shadow: 2px 0 #f0f;
+  animation: preloader-glitch-2 2.5s infinite linear alternate-reverse;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes preloader-glitch {
+  0% { transform: translate(3px); }
+  20% { transform: translate(-3px); }
+  40% { transform: translate(3px); }
+  60% { transform: translate(-3px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes preloader-glitch-2 {
+  0% { transform: translate(-3px); }
+  25% { transform: translate(3px); }
+  50% { transform: translate(-3px); }
+  75% { transform: translate(3px); }
+  100% { transform: translate(0); }
+}
+
+.preloader-loader-bar {
+  width: 250px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.preloader-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: #ff2a2a;
+  animation: preloader-fill 2.4s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+}
+
+@keyframes preloader-fill {
+  0% { width: 0%; }
+  35% { width: 40%; }
+  80% { width: 90%; }
+  100% { width: 100%; }
+}
+
+.preloader-tagline {
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  animation: preloader-pulse 1.5s infinite alternate;
+}
+
+@keyframes preloader-pulse {
+  from { opacity: 0.3; }
+  to { opacity: 0.9; }
+}
