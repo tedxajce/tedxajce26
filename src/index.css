@@ -1,0 +1,386 @@
+:root {
+  font-family: 'Outfit', 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #050505;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 900vh; /* Extended SCROLL length accommodating all normal stacked HTML sections natively */
+  background: #000;
+  color: white;
+}
+
+/* ========================================================= */
+/* Responsive Overrides (Mobile Adaption)                    */
+/* ========================================================= */
+@media (max-width: 768px) {
+  .theme-split-container {
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+  .theme-divider {
+    display: none !important;
+  }
+  .section-padding {
+    padding: 60px 20px !important;
+  }
+  .hud-layer .logo-text {
+    font-size: 1.2rem !important;
+  }
+  .hud-layer .scroll-indicator {
+    font-size: 0.7rem !important;
+  }
+  .responsive-title {
+    font-size: 2rem !important;
+    margin-bottom: 3rem !important;
+  }
+}
+
+/* ========================================================= */
+/* Utilities                                                 */
+/* ========================================================= */
+/* Mask system scrollbars universally on webkit and mozilla  */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#root {
+  width: 100%;
+  z-index: 1;
+}
+
+.hud-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #fff;
+  opacity: 0.8;
+  mix-blend-mode: difference;
+}
+
+.scroll-indicator {
+  align-self: center;
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.5;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.8; }
+}
+
+/* ========================================================= */
+/* Hero Landing UI & Glitch FX                               */
+/* ========================================================= */
+.hero-landing-ui {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+}
+
+.hero-bottom-branding {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 60%;
+  display: flex;
+  flex-direction: row; /* Modern flex-row alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: opacity 1s ease, transform 1s ease;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero-bottom-branding {
+    flex-direction: column;
+    gap: 1rem;
+    bottom: 2rem;
+  }
+}
+
+.hero-title-main {
+  font-size: clamp(3rem, 12vw, 9rem); /* Slightly reduced origin size for better balance */
+  font-weight: 900;
+  letter-spacing: clamp(8px, 3vw, 25px);
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  color: #fff;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.tagline-glitch {
+  font-size: clamp(0.6rem, 1.2vw, 0.85rem); /* Reduced as requested */
+  font-weight: 300;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: #ff2a2a;
+  opacity: 0.8;
+  position: relative;
+  margin: 0;
+  white-space: nowrap;
+}
+
+/* Premium Subtle Glitch Physics */
+.glitch-container {
+  display: inline-block;
+  position: relative;
+}
+
+.glitch-copy {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0.7;
+}
+
+.hero-title-main .glitch-copy:nth-child(2) {
+  color: #0ff;
+  animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  transform: translate(-5px);
+}
+
+.hero-title-main .glitch-copy:nth-child(3) {
+  color: #f0f;
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  transform: translate(5px);
+}
+
+@keyframes glitch-anim-1 {
+  0% { transform: translate(5px); }
+  20% { transform: translate(-5px); }
+  40% { transform: translate(5px); }
+  60% { transform: translate(-5px); }
+  100% { transform: translate(0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { transform: translate(-5px); }
+  25% { transform: translate(5px); }
+  50% { transform: translate(-5px); }
+  75% { transform: translate(5px); }
+  100% { transform: translate(0); }
+}
+
+.hero-logo-bottom {
+  max-width: 140px;
+  opacity: 0.7;
+  mix-blend-mode: lighten;
+  transition: opacity 0.5s ease;
+}
+
+/* New Top Branding Typography */
+.hero-top-branding {
+  position: absolute;
+  top: clamp(2rem, 5vh, 4rem);
+  left: clamp(2rem, 5vw, 4rem);
+  z-index: 20;
+}
+
+.hero-event-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.hero-edition {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(0.6rem, 1.2vw, 0.8rem);
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0.5rem 0 0 0;
+  line-height: 1;
+}
+
+.scroll-hint-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  opacity: 0.5;
+  margin-top: 1rem;
+}
+
+.down-arrow {
+  width: 16px;
+  height: 16px;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(45deg);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
+  40% { transform: translateY(-10px) rotate(45deg); }
+  60% { transform: translateY(-5px) rotate(45deg); }
+}
+
+/* ========================================================= */
+/* Custom Cursor Geometry Controls                           */
+/* ========================================================= */
+@media (pointer: fine) {
+    /* Globally obliterate standard OS hardware cursors exclusively strictly prioritizing CustomCursor.jsx */
+    * {
+        cursor: none !important;
+    }
+}
+
+/* ========================================================= */
+/* Navbar Responsive Styles                                  */
+/* ========================================================= */
+.navbar {
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1.2rem 4rem;
+}
+
+.nav-links-desktop {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.mobile-menu-trigger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.mobile-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.mobile-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  transition: color 0.3s ease;
+}
+
+.mobile-nav-link:active {
+  color: #ff2a2a;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.5rem !important;
+  }
+  
+  .nav-links-desktop {
+    display: none !important;
+  }
+  
+  .desktop-register {
+    display: none !important;
+  }
+  
+  .mobile-menu-trigger {
+    display: block !important;
+  }
+  
+  .navbar-logo {
+     font-size: 1.1rem !important;
+  }
+}
