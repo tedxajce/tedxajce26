@@ -40,7 +40,7 @@ export default function TicketSection() {
         .ticket-container {
           width: 100%;
           max-width: 900px;
-          height: 480px;
+          height: 440px;
           display: flex;
           background: rgba(15, 15, 15, 0.75);
           backdrop-filter: blur(25px);
@@ -217,9 +217,16 @@ export default function TicketSection() {
       >
         {/* Main Section */}
         <div className="ticket-main">
-          <div>
-            <div className="ticket-tag">TEDxAJCE 2026 • ORIGIN</div>
-            <h2 className="ticket-title">ADMIT<br /><span style={{color: '#ff2a2a'}}>ONE</span></h2>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <div className="ticket-tag">TEDxAJCE 2026 • ORIGIN</div>
+              <h2 className="ticket-title">ADMIT<br /><span style={{color: '#ff2a2a'}}>ONE</span></h2>
+            </div>
+            <div style={{ textAlign: 'right', marginTop: '1rem' }}>
+              <div className="ticket-tag" style={{ marginBottom: '0.2rem' }}>PRICE</div>
+              <div className="ticket-title" style={{ color: '#fff', fontSize: '4.5rem' }}>1180</div>
+              <div style={{ fontSize: '0.6rem', color: '#888', letterSpacing: '1px', marginTop: '0.5rem' }}>INCL. ALL TAXES</div>
+            </div>
           </div>
 
           <div className="ticket-info-grid">
@@ -238,14 +245,6 @@ export default function TicketSection() {
             <div className="info-item">
               <label>Seat</label>
               <span>GENERAL ACCESS</span>
-            </div>
-            <div className="info-item">
-              <label>Price</label>
-              <span>₹1180 <span style={{fontSize: '0.6rem', color: '#888', fontWeight: '400', display: 'block', marginTop: '2px'}}>INCL. ALL TAXES</span></span>
-            </div>
-            <div className="info-item">
-              <label>Edition</label>
-              <span>8TH EDITION</span>
             </div>
           </div>
         </div>
