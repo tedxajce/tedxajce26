@@ -25,7 +25,7 @@ function LogoParticles({ position }) {
   const { tier } = useDetectGPU()
 
   // Ensure full coverage by scaling density/size
-  const INSTANCE_COUNT = tier === 0 ? 2000 : tier === 1 ? 4000 : 8000
+  const INSTANCE_COUNT = tier === 0 ? 4000 : tier === 1 ? 4000 : 8000
   const particleSize = tier === 0 ? 0.4 : tier === 1 ? 0.25 : 0.15
   
   const particleTex = useMemo(() => createParticleTexture(), [])

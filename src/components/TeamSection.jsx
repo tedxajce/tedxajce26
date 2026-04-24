@@ -101,20 +101,20 @@ const teamArchitecture = [
    // ROW 1
    [
       { name: "Shivani Vijayaraghavan", role: "Organizer", img: "shivanivijayaraghavan.jpeg" },
-      { name: "Alan Biju", role: "Co-Organizer", img: "Photo.jpg" },
-      { name: "Josu Denny", role: "Production Lead", img: "Josu Denny.jpg" }
+      { name: "Alan Biju", role: "Co-Organizer", img: "Alan.jpeg" },
+      { name: "Josu Denny", role: "Production Lead", img: "Josu Denny.jpeg" }
    ],
    // ROW 2
    [
-      { name: "Abel Biju George", role: "Marketing Lead", img: "Abel_Biju_George.jpg" },
+      { name: "Abel Biju George", role: "Marketing Lead", img: "Abel_Biju_George.jpeg" },
       { name: "Rebecca Mary Varughese", role: "Curation Lead", img: "Rebecca Mary Varughese.jpeg" },
       { name: "Neha Biju", role: "Editorial Lead", img: "Neha.jpeg" }
    ],
    // ROW 3
    [
-      { name: "Bava Kurian", role: "Web Lead", img: "Bava Kurian .jpeg" },
-      { name: "Vidyasagar R", role: "Web Co-Lead", img: "Vidya.JPG" },
-      { name: "Neil Abraham", role: "Media Lead", img: null }
+      { name: "Bava Kurian", role: "Web Lead", img: "Bava Kurian.jpeg" },
+      { name: "Vidyasagar R", role: "Web Co-Lead", img: "Vidya.jpeg" },
+      { name: "Neil Abraham", role: "Media Lead", img: "Neil_Abraham.jpeg" }
    ]
 ]
 

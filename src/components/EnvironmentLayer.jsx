@@ -28,7 +28,7 @@ export default function EnvironmentLayer() {
   const [positions, scales, colorsArray] = useMemo(() => {
     const isMobile = window.innerWidth < 768;
     // Cap strictly on mobile, or fallback to GPU Tier parsing for desktop
-    const count = isMobile ? 4000 : (tier === 0 ? 10000 : tier === 1 ? 20000 : 50000);
+    const count = isMobile ? 7000 : (tier === 0 ? 10000 : tier === 1 ? 20000 : 50000);
     const pos = new Float32Array(count * 3)
     const scale = new Float32Array(count)
     const colors = new Float32Array(count * 3)

@@ -35,7 +35,7 @@ export default function Hero() {
   const { tier } = useDetectGPU()
 
   // GPU Matrix sizing
-  const particleCount = tier === 0 ? 2000 : tier === 1 ? 5000 : 10000
+  const particleCount = tier === 0 ? 4000 : tier === 1 ? 5000 : 10000
   const particleSize = tier === 0 ? 0.3 : tier === 1 ? 0.2 : 0.15
 
   const particleTex = useMemo(() => createParticleTexture(), [])

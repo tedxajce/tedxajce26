@@ -244,7 +244,7 @@ export default function TicketSection() {
               <rect x="35" y="35" width="10" height="10" />
             </svg>
           </div>
-          <a href="#register" className="book-button">BOOK NOW</a>
+          <a href="https://events.amaljyothi.ac.in/events/yr2o47" target="_blank" rel="noopener noreferrer" className="book-button">BOOK NOW</a>
           <div className="stub-id">#ORIGIN-2026-TX</div>
         </div>
       </div>
