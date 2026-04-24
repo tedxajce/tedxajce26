@@ -71,7 +71,7 @@ export default function ThemeDetails() {
       `}</style>
 
       <div className="theme-details-box">
-        <h1 style={{
+        <h2 style={{
           textAlign: 'center',
           margin: '0 0 3.5rem 0',
           fontWeight: '300',
@@ -79,7 +79,7 @@ export default function ThemeDetails() {
           fontSize: '3rem'
         }}>
           Our Theme: <span style={{ color: '#ff2a2a', fontWeight: '800' }}>ORIGIN</span>
-        </h1>
+        </h2>
 
         <div className="theme-inner">
 
@@ -104,7 +104,7 @@ export default function ThemeDetails() {
           <div className="theme-logo-box">
             <img
               src={import.meta.env.BASE_URL + "tedl.png"}
-              alt="TEDxAJCE 2026 Logo"
+              alt="TEDxAJCE 2026: ORIGIN Theme Logo"
               style={{
                 maxWidth: '100%',
                 maxHeight: '400px',

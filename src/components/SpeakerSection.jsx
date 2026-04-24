@@ -3,10 +3,11 @@ import React, { useState, useRef } from 'react'
 const vectorAvatarFallback = `data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="%231a1a1a" /><circle cx="50" cy="35" r="20" fill="%232b2b2b" /><path d="M20 100 C 20 60, 80 60, 80 100" fill="%232b2b2b" /></svg>`
 
 const speakersData = [
+  { id: 1, name: 'Prem Krishnan S', role: 'IAS, District Collector, Pathanamthitta', img: import.meta.env.BASE_URL + 'Shri_Prem_Krishnan_S.jpeg', bio: 'Shri Prem Krishnan S, IAS is a 2017-batch Kerala cadre officer serving as the 38th District Collector of Pathanamthitta since March 4, 2024. Known for tech-driven governance and youth outreach, he launched initiatives like the Sabarimala “Swami” WhatsApp chatbot, Project Roots for civic education, and the ‘Swap Your Screen for a Sport’ campaign to promote outdoor play.' },
   { id: 2, name: 'Anoop Ambika', role: 'KSUM', img: import.meta.env.BASE_URL + 'Anoop-Mookambika.jpg', bio: 'Anoop Ambika, part of Kerala Startup Mission (KSUM), fuels entrepreneurial growth. He empowers startups, shaping India\'s innovation ecosystem.' },
   { id: 3, name: 'Asif Muhammad', role: 'Techiewizard', img: import.meta.env.BASE_URL + 'Asif-Muhammed.N.jpg', bio: 'Asif Muhammad is a tech expert transforming ideas into reality. His innovations impact industries and communities alike.' },
   { id: 4, name: 'Tapesh & Prachi', role: 'Pilots', img: import.meta.env.BASE_URL + 'Tapesh&Prachi.jpg', bio: 'Tapesh Kumar (world\'s youngest airline captain at 25 & "Boeing Boy" YouTuber) and Prachi Goswami (commercial pilot & former national swimmer) are a dynamic speaker duo known for their inspiring stories on conquering chaos.' },
-  { id: 5, name: 'Abna', role: 'National level sports person', img: import.meta.env.BASE_URL + 'Abna.jpg', bio: 'She is a dedicated Indian athlete and Asian-level medalist, with a bronze at the World Skate Games 2024 in Italy and 13 national medals in skating—5 gold, 4 silver, 4 bronze. A national-level athletics gold medalist and multi-time All India Inter University podium finisher, I’m driven to represent India with discipline and excellence on international platforms.' },
+  { id: 5, name: 'Abna', role: 'National level sports person', img: import.meta.env.BASE_URL + 'Abna.jpeg', bio: 'She is a dedicated Indian athlete and Asian-level medalist, with a bronze at the World Skate Games 2024 in Italy and 13 national medals in skating—5 gold, 4 silver, 4 bronze. A national-level athletics gold medalist and multi-time All India Inter University podium finisher, I’m driven to represent India with discipline and excellence on international platforms.' },
   { id: 7, name: 'Dr. Elizabeth George', role: 'RF Engineer and Deep Tech Enterpreneur', img: import.meta.env.BASE_URL + 'Dr._Elizabeth_George.jpeg', bio: 'Co-founder and RF Solutions Architect at Xark Technologies, developing high-performance MMIC and RF front-end solutions for defense, space, and advanced communication systems, bridging system architecture with real-world requirements. With a PhD from IIST and postdoc at Digital University Kerala.' },
   { id: 8, name: 'George Pullikan', role: 'Journalist', img: import.meta.env.BASE_URL + 'George_Pullikan.jpeg', bio: 'George Pullikkan is a seasoned media and communications professional known for his impactful work in storytelling and public engagement. He has played a key role in shaping narratives across platforms, bringing clarity and depth to complex ideas.' },
   { id: 9, name: 'Shwetha Jayaram', role: 'Model, Entrepreneur and Trainer', img: import.meta.env.BASE_URL + 'swetha.jpeg', bio: 'Shwetha Jayaram, the finalist in Vanitha Miss Kerala 2025 elaborates her commitment to and love for modeling. From a young age, she has been driven by a passion for modeling.A distinguished model, entrepreneur, and trainer, your journey stands as a testament to the power of storytelling, knowledge, and communication.' }
@@ -64,7 +65,7 @@ function SpeakerCard({ speaker }) {
           }}>
             <img
               src={speaker.img || vectorAvatarFallback}
-              alt={speaker.name}
+              alt={`${speaker.name} - Speaker at TEDxAJCE 2026: ORIGIN`}
               style={{
                 position: 'absolute',
                 top: 0,
@@ -151,13 +152,20 @@ export default function SpeakerSection() {
     if (!el) return;
 
     let animId;
-    const scroll = () => {
+    let lastTime = performance.now();
+
+    const scroll = (currentTime) => {
       if (!isHovered.current) {
-        el.scrollLeft += 2.5; // increased pixel scroll velocity
+        const deltaTime = currentTime - lastTime;
+        const pixelsPerSecond = 150; // Set to user-preferred speed
+
+        el.scrollLeft += (pixelsPerSecond * deltaTime) / 1000;
+
         if (el.scrollLeft >= el.scrollWidth / 4) {
           el.scrollLeft -= el.scrollWidth / 4;
         }
       }
+      lastTime = currentTime;
       animId = requestAnimationFrame(scroll);
     }
     animId = requestAnimationFrame(scroll);

@@ -100,7 +100,7 @@ const vectorAvatarFallback = `data:image/svg+xml;utf8,<svg viewBox="0 0 100 100"
 const teamArchitecture = [
    // ROW 1
    [
-      { name: "Shivani Vijayaraghavan", role: "Organizer", img: "shivanivijayaraghavan.jpeg" },
+      { name: "Shivani Vijayaraghavan", role: "Organizer", img: "shivanivijayaraghavan.jpg" },
       { name: "Alan Biju", role: "Co-Organizer", img: "Alan.jpeg" },
       { name: "Josu Denny", role: "Production Lead", img: "Josu Denny.jpeg" }
    ],
@@ -136,7 +136,7 @@ function TeamCard({ member }) {
                <div className="team-card-inner">
                   <img
                      src={imageSrc}
-                     alt={member.name}
+                     alt={`${member.name} - ${member.role} of TEDxAJCE 2026`}
                      style={{
                         position: 'absolute',
                         top: 0,

@@ -40,7 +40,7 @@ export default function TicketSection() {
         .ticket-container {
           width: 100%;
           max-width: 900px;
-          height: 400px;
+          height: 480px;
           display: flex;
           background: rgba(15, 15, 15, 0.75);
           backdrop-filter: blur(25px);
@@ -71,7 +71,7 @@ export default function TicketSection() {
 
         .ticket-main {
           flex: 7;
-          padding: 3rem;
+          padding: 2.5rem 3rem;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -110,8 +110,8 @@ export default function TicketSection() {
         .ticket-info-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-          margin-top: 2rem;
+          gap: 1.5rem;
+          margin-top: 1.5rem;
         }
 
         .info-item label {
@@ -197,6 +197,18 @@ export default function TicketSection() {
         }
       `}</style>
 
+      <h2 style={{
+        color: 'white',
+        fontSize: '3rem',
+        fontWeight: '300',
+        letterSpacing: '4px',
+        marginBottom: '4rem',
+        textAlign: 'center',
+        textTransform: 'uppercase'
+      }}>
+        Get Your <span style={{ color: '#ff2a2a', fontWeight: '800' }}>Tickets</span>
+      </h2>
+
       <div 
         ref={cardRef}
         className="ticket-container"
@@ -226,6 +238,14 @@ export default function TicketSection() {
             <div className="info-item">
               <label>Seat</label>
               <span>GENERAL ACCESS</span>
+            </div>
+            <div className="info-item">
+              <label>Price</label>
+              <span>₹1180 <span style={{fontSize: '0.6rem', color: '#888', fontWeight: '400', display: 'block', marginTop: '2px'}}>INCL. ALL TAXES</span></span>
+            </div>
+            <div className="info-item">
+              <label>Edition</label>
+              <span>8TH EDITION</span>
             </div>
           </div>
         </div>
