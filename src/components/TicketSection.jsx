@@ -224,7 +224,7 @@ export default function TicketSection() {
             </div>
             <div style={{ textAlign: 'right', marginTop: '1rem' }}>
               <div className="ticket-tag" style={{ marginBottom: '0.2rem' }}>PRICE</div>
-              <div className="ticket-title" style={{ color: '#fff', fontSize: '4.5rem' }}>1180</div>
+              <div className="ticket-title" style={{ color: '#fff', fontSize: '3.5rem' }}>1180</div>
               <div style={{ fontSize: '0.6rem', color: '#888', letterSpacing: '1px', marginTop: '0.5rem' }}>INCL. ALL TAXES</div>
             </div>
           </div>
