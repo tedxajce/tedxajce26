@@ -10,7 +10,8 @@ const speakersData = [
   { id: 5, name: 'Abna', role: 'National level sports person', img: import.meta.env.BASE_URL + 'Abna.jpeg', bio: 'She is a dedicated Indian athlete and Asian-level medalist, with a bronze at the World Skate Games 2024 in Italy and 13 national medals in skating—5 gold, 4 silver, 4 bronze. A national-level athletics gold medalist and multi-time All India Inter University podium finisher, I’m driven to represent India with discipline and excellence on international platforms.' },
   { id: 7, name: 'Dr. Elizabeth George', role: 'RF Engineer and Deep Tech Enterpreneur', img: import.meta.env.BASE_URL + 'Dr._Elizabeth_George.jpeg', bio: 'Co-founder and RF Solutions Architect at Xark Technologies, developing high-performance MMIC and RF front-end solutions for defense, space, and advanced communication systems, bridging system architecture with real-world requirements. With a PhD from IIST and postdoc at Digital University Kerala.' },
   { id: 8, name: 'George Pullikan', role: 'Journalist', img: import.meta.env.BASE_URL + 'George_Pullikan.jpeg', bio: 'George Pullikkan is a seasoned media and communications professional known for his impactful work in storytelling and public engagement. He has played a key role in shaping narratives across platforms, bringing clarity and depth to complex ideas.' },
-  { id: 9, name: 'Shwetha Jayaram', role: 'Model, Entrepreneur and Trainer', img: import.meta.env.BASE_URL + 'swetha.jpeg', bio: 'Shwetha Jayaram, the finalist in Vanitha Miss Kerala 2025 elaborates her commitment to and love for modeling. From a young age, she has been driven by a passion for modeling.A distinguished model, entrepreneur, and trainer, your journey stands as a testament to the power of storytelling, knowledge, and communication.' }
+  { id: 9, name: 'Shwetha Jayaram', role: 'Model, Entrepreneur and Trainer', img: import.meta.env.BASE_URL + 'swetha.jpeg', bio: 'Shwetha Jayaram, the finalist in Vanitha Miss Kerala 2025 elaborates her commitment to and love for modeling. From a young age, she has been driven by a passion for modeling.A distinguished model, entrepreneur, and trainer, your journey stands as a testament to the power of storytelling, knowledge, and communication.' },
+  { id: 10, name: 'Rahul Ramachandran', role: 'Film Director and Scriptwriter', img: import.meta.env.BASE_URL + 'Rahul_Ramachandran.jpeg', bio: 'Rahul Ramachandran is an Indian film director and scriptwriter in the Malayalam industry, known for his debut feature Jeem Boom Bhaa (2019) and the IDSFFK-selected short film ADAM. Since starting with short films in 2017, he has announced projects like SG 251 with Suresh Gopi and married actress Sreevidya Mullachery in September 2024.' }
 ]
 
 function SpeakerCard({ speaker }) {
@@ -144,8 +145,9 @@ export default function SpeakerSection() {
   const scrollRef = useRef()
   const isHovered = useRef(false)
 
-  // Duplicated enough data points to establish a stable repeating loop
-  const infiniteSpeakers = [...speakersData, ...speakersData, ...speakersData, ...speakersData]
+  // Duplicated data points to establish a stable repeating loop
+  // Using 3 copies to implement a more robust middle-reset infinite scroll
+  const infiniteSpeakers = [...speakersData, ...speakersData, ...speakersData]
 
   React.useEffect(() => {
     const el = scrollRef.current;
@@ -153,24 +155,51 @@ export default function SpeakerSection() {
 
     let animId;
     let lastTime = performance.now();
+    // Initialize with current scroll position to handle initial state or manual changes
+    let currentScrollPos = el.scrollLeft;
 
     const scroll = (currentTime) => {
-      if (!isHovered.current) {
-        const deltaTime = currentTime - lastTime;
-        const pixelsPerSecond = 150; // Set to user-preferred speed
-
-        el.scrollLeft += (pixelsPerSecond * deltaTime) / 1000;
-
-        if (el.scrollLeft >= el.scrollWidth / 4) {
-          el.scrollLeft -= el.scrollWidth / 4;
-        }
-      }
+      const deltaTime = currentTime - lastTime;
       lastTime = currentTime;
+
+      if (!isHovered.current) {
+        const pixelsPerSecond = 80; // Smooth, steady pace
+
+        // Calculate the exact width of one complete set of speakers including gaps
+        // We do this inside the loop to handle window resizing or dynamic content
+        if (el.children.length >= speakersData.length * 2) {
+          const firstItem = el.children[0];
+          const secondSetFirstItem = el.children[speakersData.length];
+          const cycleWidth = secondSetFirstItem.offsetLeft - firstItem.offsetLeft;
+
+          if (cycleWidth > 0) {
+            // If we're at 0 (start), jump to the middle set for a seamless start
+            if (currentScrollPos <= 0) {
+              currentScrollPos = cycleWidth;
+            }
+
+            currentScrollPos += (pixelsPerSecond * deltaTime) / 1000;
+
+            // Reset when we've scrolled past the second set
+            // The jump is invisible because the content at cycleWidth is identical to cycleWidth * 2
+            if (currentScrollPos >= cycleWidth * 2) {
+              currentScrollPos -= cycleWidth;
+            }
+            
+            el.scrollLeft = currentScrollPos;
+          }
+        }
+      } else {
+        // Sync our tracking variable with the actual scroll position if user is manual scrolling
+        currentScrollPos = el.scrollLeft;
+      }
+
       animId = requestAnimationFrame(scroll);
-    }
+    };
+
     animId = requestAnimationFrame(scroll);
     return () => cancelAnimationFrame(animId);
-  }, []);
+  }, [speakersData.length]);
 
   return (
     <div className="section-padding" style={{
