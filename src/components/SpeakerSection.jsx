@@ -163,7 +163,7 @@ export default function SpeakerSection() {
       lastTime = currentTime;
 
       if (!isHovered.current) {
-        const pixelsPerSecond = 80; // Smooth, steady pace
+        const pixelsPerSecond = 150; // Smooth, steady pace
 
         // Calculate the exact width of one complete set of speakers including gaps
         // We do this inside the loop to handle window resizing or dynamic content
