@@ -11,7 +11,7 @@ const speakersData = [
   { id: 8, name: 'George Pullikan', role: 'Journalist', img: import.meta.env.BASE_URL + 'George_Pullikan.jpeg', bio: 'George Pullikkan is a seasoned media and communications professional known for his impactful work in storytelling and public engagement. He has played a key role in shaping narratives across platforms, bringing clarity and depth to complex ideas.' },
   { id: 9, name: 'Shwetha Jayaram', role: 'Model, Entrepreneur and Trainer', img: import.meta.env.BASE_URL + 'swetha.jpeg', bio: 'Shwetha Jayaram, the finalist in Vanitha Miss Kerala 2025 elaborates her commitment to and love for modeling. From a young age, she has been driven by a passion for modeling.A distinguished model, entrepreneur, and trainer, your journey stands as a testament to the power of storytelling, knowledge, and communication.' },
   { id: 10, name: 'Rahul Ramachandran', role: 'Film Director and Scriptwriter', img: import.meta.env.BASE_URL + 'Rahul_Ramachandran.jpeg', bio: 'Rahul Ramachandran is an Indian film director and scriptwriter in the Malayalam industry, known for his debut feature Jeem Boom Bhaa (2019) and the IDSFFK-selected short film ADAM. Since starting with short films in 2017, he has announced projects like SG 251 with Suresh Gopi and married actress Sreevidya Mullachery in September 2024.' },
-  { id: 11, name: 'Claire C John', role: 'Actress', img: import.meta.env.BASE_URL + 'Claire-C-John.jpg', bio: 'Claire C John is a talented actress known for her compelling performances and versatility on screen. With a deep passion for storytelling, she brings authenticity and depth to every character she portrays, captivating audiences across diverse roles. Her dedication to her craft and impactful presence in the entertainment industry make her an inspiring figure.' }
+  { id: 11, name: 'Claire C John', role: 'Actress and Social Entrepreneur', img: import.meta.env.BASE_URL + 'Claire-C-John.jpg', bio: 'Claire C John is a talented actress known for her compelling performances and versatility on screen. With a deep passion for storytelling, she brings authenticity and depth to every character she portrays, captivating audiences across diverse roles. Her dedication to her craft and impactful presence in the entertainment industry make her an inspiring figure.' }
 ]
 
 function SpeakerCard({ speaker }) {
@@ -58,11 +58,7 @@ function SpeakerCard({ speaker }) {
             borderRadius: '35px',
             border: '1px solid rgba(255,255,255,0.1)',
             boxShadow: '0 20px 50px rgba(0,0,0,0.8)',
-            overflow: 'hidden', // Clips oversized image widths
-            backgroundImage: `url(${import.meta.env.BASE_URL}securedoodle.png)`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundBlendMode: 'overlay'
+            overflow: 'hidden' // Clips oversized image widths
           }}>
             <img
               src={speaker.img || vectorAvatarFallback}
