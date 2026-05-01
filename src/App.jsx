@@ -17,6 +17,7 @@ import ThemeDetails from './components/ThemeDetails'
 import SpeakerSection from './components/SpeakerSection'
 import TicketSection from './components/TicketSection'
 import TeamSection from './components/TeamSection'
+import SponsorSection from './components/SponsorSection'
 import ContactSection from './components/ContactSection'
 import CustomCursor from './components/CustomCursor'
 import Navbar from './components/Navbar'
@@ -170,6 +171,7 @@ export default function App() {
         <div id="speakers"><SpeakerSection /></div>
         <div id="tickets"><TicketSection /></div>
         <div id="team"><TeamSection /></div>
+        <div id="sponsors"><SponsorSection /></div>
         <div id="contact"><ContactSection /></div>
       </div>
     </>

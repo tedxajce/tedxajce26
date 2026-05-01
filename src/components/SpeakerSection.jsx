@@ -206,7 +206,7 @@ export default function SpeakerSection() {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '6rem 0',
+      padding: '4rem 0',
       zIndex: 50,
       pointerEvents: 'auto'
     }}>

@@ -31,7 +31,7 @@ export default function TicketSection() {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '6rem 2rem',
+      padding: '4rem 2rem',
       zIndex: 50,
       pointerEvents: 'auto',
       overflow: 'visible'
